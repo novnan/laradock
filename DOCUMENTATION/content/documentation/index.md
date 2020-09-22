@@ -61,7 +61,7 @@ docker-compose down
 
 > Run commands in a running Container.
 
-1 - First list the current running containers with `docker ps`
+1 - First list the currently running containers with `docker ps`
 
 2 - Enter any container using:
 
@@ -220,9 +220,9 @@ The PHP-CLI extensions should be installed in `workspace/Dockerfile`.
 <br>
 <a name="Change-the-PHP-FPM-Version"></a>
 ## Change the (PHP-FPM) Version
-By default the latest stable PHP versin is configured to run.
+By default the latest stable PHP version is configured to run.
 
->The PHP-FPM is responsible of serving your application code, you don't have to change the PHP-CLI version if you are planning to run your application on different PHP-FPM version.
+>The PHP-FPM is responsible for serving your application code, you don't have to change the PHP-CLI version if you are planning to run your application on different PHP-FPM version.
 
 
 ### A) Switch from PHP `7.2` to PHP `5.6`
@@ -309,7 +309,7 @@ To control the behavior of xDebug (in the `php-fpm` Container), you can run the 
 - Start xDebug by default: `.php-fpm/xdebug start`.
 - See the status: `.php-fpm/xdebug status`.
 
-Note: If `.php-fpm/xdebug` doesn't execute and gives `Permission Denied` error the problem can be that file `xdebug` doesn't have execution access. This can be fixed by running `chmod` command  with desired access permissions.
+Note: If `.php-fpm/xdebug` doesn't execute and gives `Permission Denied` error the problem can be that file `xdebug` doesn't have execution access. This can be fixed by running `chmod` command with desired access permissions.
 
 
 
@@ -820,7 +820,7 @@ Read the [Laravel official documentation](https://laravel.com/docs/5.7/redis#con
 
 ## Use Varnish
 
-The goal was to proxy request to varnish server using nginx. So only nginx has been configured for Varnish proxy.
+The goal was to proxy the request to varnish server using nginx. So only nginx has been configured for Varnish proxy.
 Nginx is on port 80 or 443. Nginx sends request through varnish server and varnish server sends request back to nginx on port 81 (external port is defined in `VARNISH_BACKEND_PORT`).
 
 The idea was taken from this [post](https://www.linode.com/docs/websites/varnish/use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8/)
@@ -2021,7 +2021,7 @@ To install FFMPEG in the Workspace container
 
 4 - If you use the `php-worker` container too, please follow the same steps above especially if you have conversions that have been queued.
 
-**PS** Don't forget to install the binary in the `php-fpm` container too by applying the same steps above to its container, otherwise the you'll get an error when running the `php-ffmpeg` binary.
+**PS** Don't forget to install the binary in the `php-fpm` container too by applying the same steps above to its container, otherwise you'll get an error when running the `php-ffmpeg` binary.
 
 
 <br>
@@ -2283,6 +2283,26 @@ For configuration information, visit the [bash-git-prompt repository](https://gi
 5 - Use it `docker-compose exec --user=laradock workspace zsh`
 
 **Note** You can configure Oh My ZSH by editing the `/home/laradock/.zshrc` in running container.
+
+> With the ZSH autosuggestions plugin.
+
+[ZSH autosuggestions plugin](https://github.com/zsh-users/zsh-autosuggestions) suggests commands as you type based on history and completions.
+
+1 - Enable ZSH as described previously
+
+2 - Set `SHELL_OH_MY_ZSH_AUTOSUGESTIONS` to `true`
+
+3 - Rebuild and use ZSH as described previously
+
+> With bash aliases loaded.
+
+Laradock provides aliases through the `aliases.sh` file located in the `laradock/workspace` directory. You can load it into ZSH.
+
+1 - Enable ZSH as described previously
+
+2 - Set `SHELL_OH_MY_ZSH_ALIASES` to `true`
+
+3 - Rebuild and enjoy aliases
 
 <br>
 <a name="phpstorm-debugging"></a>
